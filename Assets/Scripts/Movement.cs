@@ -1,10 +1,14 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
     public float speed;
     public GameObject Canvas;
-    public GameObject Item; 
+    public GameObject Item;
+    public float health;
+    public Button button;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,6 +48,7 @@ public class Movement : MonoBehaviour
         { 
             Canvas.SetActive(false);
         }
-     
+
+        button.GetComponentInChildren<TextMeshProUGUI>().text = health.ToString();
     }
 }
