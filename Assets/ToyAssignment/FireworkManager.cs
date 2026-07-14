@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
 public class FireworkManager : MonoBehaviour
 {
     public GameObject fireworkPrefab;
     public Transform launchPoint;
+    public Transform spawnPoint;
 
     public Slider angleSlider;
     public Slider speedSlider;
@@ -22,9 +22,6 @@ public class FireworkManager : MonoBehaviour
     public float autoShootDelay = 1f;
 
     public int fireworkCount = 0;
-
-    public GameObject explosionPrefab; // a small circle prefab, assign in Inspector
-    public int explosionCount = 8;
 
     void Update()
     {
@@ -55,7 +52,7 @@ public class FireworkManager : MonoBehaviour
     // called by the Shoot button
     public void ShootFirework()
     {
-        GameObject newFirework = Instantiate(fireworkPrefab, launchPoint.position, launchPoint.rotation);
+        GameObject newFirework = Instantiate(fireworkPrefab, spawnPoint.position, launchPoint.rotation);
 
         // get the sprite renderer on the new firework and set its colour
         SpriteRenderer sr = newFirework.GetComponent<SpriteRenderer>();
@@ -79,10 +76,7 @@ public class FireworkManager : MonoBehaviour
     {
         autoShoot = !autoShoot;
     }
-
-
 }
-
 
 
 

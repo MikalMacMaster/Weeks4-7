@@ -11,11 +11,15 @@ public class Firework : MonoBehaviour
     public bool canExplode = true;
 
     public Vector3 velocity;
+    public bool isExplosionPiece = false; // true only for burst pieces
 
     void Start()
     {
-        // store initial direction and speed as a velocity vector
-        velocity = transform.up * speed;
+        // skip auto-calculating velocity if Explode() already set it for us
+        if (!isExplosionPiece)
+        {
+            velocity = transform.up * speed;
+        }
     }
 
     void Update()
@@ -43,20 +47,25 @@ public class Firework : MonoBehaviour
 
         for (int i = 0; i < explosionCount; i++)
         {
-            // spread pieces out evenly in a circle of directions
-            float angle = i * (360f / explosionCount);
-            Vector3 dir = Quaternion.Euler(0, 0, angle) * Vector3.up;
+            // work out an angle in radians for this piece around the circle
+            float angleStep = 360f / explosionCount;
+            float angle = i * angleStep * Mathf.Deg2Rad; // convert degrees to radians
 
-            GameObject piece = Instantiate(explosionPrefab, transform.position, Quaternion.LookRotation(Vector3.forward, dir));
+            // use cos/sin to get a direction around the circle
+            Vector3 dir = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle), 0);
+
+            GameObject piece = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
             // apply the shared burst colour to this piece
             SpriteRenderer sr = piece.GetComponent<SpriteRenderer>();
             sr.color = burstColor;
 
             Firework fw = piece.GetComponent<Firework>();
-            fw.speed = 3f;
-            fw.timer = 0.5f;       // short life so pieces disappear quickly
-            fw.canExplode = false; // pieces don't explode again
+            fw.timer = 0.5f;            // short life so pieces disappear quickly
+            fw.canExplode = false;      // pieces don't explode again
+            fw.isExplosionPiece = true; // tell this piece's Start() to leave velocity alone
+
+            fw.velocity = dir * 3f; // set direction and speed together
         }
     }
 }
