@@ -11,11 +11,11 @@ public class Firework : MonoBehaviour
     public bool canExplode = true;
 
     public Vector3 velocity;
-    public bool isExplosionPiece = false; // true only for burst pieces
+    public bool isExplosionPiece = false; // true for burst pieces, false for the main firework
 
     void Start()
     {
-        // skip auto-calculating velocity if Explode() already set it for us
+        // don't overwrite velocity if Explode() already set it
         if (!isExplosionPiece)
         {
             velocity = transform.up * speed;
@@ -24,48 +24,46 @@ public class Firework : MonoBehaviour
 
     void Update()
     {
-        // apply a simple gravity pull downward each frame
+        // fake gravity so it arcs instead of going straight
         velocity += Vector3.down * gravity * Time.deltaTime;
         transform.position += velocity * Time.deltaTime;
 
-        // count down until it's time to destroy this firework
+        // countdown to explosion/destroy
         timer -= Time.deltaTime;
 
         if (timer <= 0)
         {
-            Explode();          // spawn the burst pieces first
-            Destroy(gameObject); // then remove this firework
+            Explode();
+            Destroy(gameObject);
         }
     }
 
     void Explode()
     {
-        if (!canExplode) return; // stop exploded pieces from exploding again
+        if (!canExplode) return; // stop pieces from exploding again
 
-        // pick one random colour for this whole burst
+        // whole burst shares one random colour
         Color burstColor = new Color(Random.value, Random.value, Random.value);
 
         for (int i = 0; i < explosionCount; i++)
         {
-            // work out an angle in radians for this piece around the circle
+            // spread pieces evenly around a circle
             float angleStep = 360f / explosionCount;
-            float angle = i * angleStep * Mathf.Deg2Rad; // convert degrees to radians
+            float angle = i * angleStep * Mathf.Deg2Rad; // Sin/Cos need radians
 
-            // use cos/sin to get a direction around the circle
             Vector3 dir = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle), 0);
 
             GameObject piece = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-            // apply the shared burst colour to this piece
             SpriteRenderer sr = piece.GetComponent<SpriteRenderer>();
             sr.color = burstColor;
 
             Firework fw = piece.GetComponent<Firework>();
-            fw.timer = 0.5f;            // short life so pieces disappear quickly
-            fw.canExplode = false;      // pieces don't explode again
-            fw.isExplosionPiece = true; // tell this piece's Start() to leave velocity alone
+            fw.timer = 0.5f;            // short life so pieces fizzle fast
+            fw.canExplode = false;      // no chain explosions
+            fw.isExplosionPiece = true; // skip velocity overwrite in Start()
 
-            fw.velocity = dir * 3f; // set direction and speed together
+            fw.velocity = dir * 3f; // send it out in its direction
         }
     }
 }
