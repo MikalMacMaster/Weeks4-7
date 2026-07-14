@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class FireworkManager : MonoBehaviour
 {
     public GameObject fireworkPrefab;
@@ -21,55 +22,67 @@ public class FireworkManager : MonoBehaviour
     public float autoShootDelay = 1f;
 
     public int fireworkCount = 0;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    public GameObject explosionPrefab; // a small circle prefab, assign in Inspector
+    public int explosionCount = 8;
+
     void Update()
     {
+        // rotate the launch point based on the angle slider
         Vector3 rotation = launchPoint.eulerAngles;
         rotation.z = angleSlider.value;
         launchPoint.eulerAngles = rotation;
 
+        // keep the UI text updated with current values
         angleText.text = "Angle: " + angleSlider.value;
         speedText.text = "Speed: " + speedSlider.value;
         countText.text = "Fireworks: " + fireworkCount;
 
+        // handle the auto shoot timer
         if (autoShoot == true)
         {
             autoShootTimer -= Time.deltaTime;
 
             if (autoShootTimer <= 0)
             {
+                ChangeColor();     // pick a new random colour for this shot
                 ShootFirework();
                 autoShootTimer = autoShootDelay;
             }
         }
     }
 
+    // called by the Shoot button
     public void ShootFirework()
     {
         GameObject newFirework = Instantiate(fireworkPrefab, launchPoint.position, launchPoint.rotation);
-        
+
+        // get the sprite renderer on the new firework and set its colour
         SpriteRenderer sr = newFirework.GetComponent<SpriteRenderer>();
         sr.color = currentColor;
 
-        Rigidbody2D rb = newFirework.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = newFirework.transform.up * speedSlider.value;
-        
+        // get the firework script on the new firework and set its speed
+        Firework fw = newFirework.GetComponent<Firework>();
+        fw.speed = speedSlider.value;
+
         fireworkCount++;
     }
 
+    // called by the Change Colour button
     public void ChangeColor()
     {
-       currentColor = new Color(Random.value, Random.value, Random.value); 
+        currentColor = new Color(Random.value, Random.value, Random.value);
     }
 
+    // called by the Auto Shoot toggle button
     public void ToggleAutoShoot()
     {
         autoShoot = !autoShoot;
     }
+
+
 }
+
+
+
+

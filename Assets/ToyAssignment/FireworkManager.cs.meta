@@ -1,2 +1,18 @@
 fileFormatVersion: 2
 guid: b44509c4fd01cab4ba262e00cbb70257
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - fireworkPrefab: {fileID: 8887567603824198962, guid: 20f2a64103410064db47fc3271bd9d47, type: 3}
+  - launchPoint: {instanceID: 0}
+  - angleSlider: {instanceID: 0}
+  - speedSlider: {instanceID: 0}
+  - angleText: {instanceID: 0}
+  - speedText: {instanceID: 0}
+  - countText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
