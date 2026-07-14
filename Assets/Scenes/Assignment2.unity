@@ -567,7 +567,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 303.02, y: -516}
+  m_AnchoredPosition: {x: 342, y: -520}
   m_SizeDelta: {x: 506.04, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &283772590
@@ -706,7 +706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -861, y: -357}
+  m_AnchoredPosition: {x: -860, y: -371}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &315740146
@@ -1051,7 +1051,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -862, y: -394}
+  m_AnchoredPosition: {x: -860, y: -413}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &393741591
@@ -1205,8 +1205,6 @@ MonoBehaviour:
   autoShootTimer: 0
   autoShootDelay: 0.25
   fireworkCount: 0
-  explosionPrefab: {fileID: 0}
-  explosionCount: 8
 --- !u!1 &495930907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,7 +1560,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 303.01782, y: -484}
+  m_AnchoredPosition: {x: 341, y: -481}
   m_SizeDelta: {x: 506.0355, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &710671200
@@ -1807,7 +1805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -47.353577, y: -477}
+  m_AnchoredPosition: {x: 0, y: -477}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &975479660
@@ -1940,7 +1938,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2150,7 +2148,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0.058700204, b: 0.1509434, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.023190385, b: 0.13207549, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2286,7 +2284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -47.353577, y: -515}
+  m_AnchoredPosition: {x: 0, y: -515}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1492387695
@@ -2489,7 +2487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -757.8895, y: 511}
+  m_AnchoredPosition: {x: -742, y: 505}
   m_SizeDelta: {x: 410.2209, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1934444556
@@ -2628,7 +2626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -861, y: -429}
+  m_AnchoredPosition: {x: -860, y: -455}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2147420703
